@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Number Guessing Game</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <h1>🎯 Number Guessing Game</h1>
+
+        <p>Guess the secret number and become the champion!</p>
+
+    </header>
+
+
+    <section id="setup" class="card">
+
+        <h2>Start Game</h2>
+
+        <input
+            type="text"
+            id="playerName"
+            placeholder="Enter your name">
+
+        <select id="difficulty">
+
+            <option value="easy">
+                Easy — 1 to 50
+            </option>
+
+            <option value="medium" selected>
+                Medium — 1 to 100
+            </option>
+
+            <option value="hard">
+                Hard — 1 to 500
+            </option>
+
+        </select>
+
+        <button onclick="startGame()">
+            🚀 Start Game
+        </button>
+
+    </section>
+
+
+    <section id="game" class="card hidden">
+
+        <div class="game-info">
+
+            <div>
+                <span>👤 Player</span>
+                <strong id="displayName">-</strong>
+            </div>
+
+            <div>
+                <span>⏱️ Time</span>
+                <strong id="timer">0</strong>s
+            </div>
+
+            <div>
+                <span>❤️ Attempts</span>
+                <strong id="attempts">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="number-range">
+
+            Guess between
+
+            <strong id="rangeText">
+                1 - 100
+            </strong>
+
+        </div>
+
+
+        <div class="guess-area">
+
+            <input
+                type="number"
+                id="guessInput"
+                placeholder="Enter your guess"
+                onkeydown="handleEnter(event)">
+
+            <button onclick="makeGuess()">
+                🎯 Guess
+            </button>
+
+        </div>
+
+
+        <div id="message" class="message">
+            Good luck! 🍀
+        </div>
+
+
+        <div class="hint-box">
+
+            <p id="hint">
+                💡 Make your first guess!
+            </p>
+
+        </div>
+
+
+        <div class="progress">
+
+            <div id="progressBar"></div>
+
+        </div>
+
+
+        <button
+            class="restart"
+            onclick="restartGame()">
+
+            🔄 Restart Game
+
+        </button>
+
+    </section>
+
+
+    <section id="result" class="card hidden">
+
+        <h2 id="resultTitle"></h2>
+
+        <div class="result-stats">
+
+            <div>
+                <span>🎯 Attempts</span>
+                <strong id="finalAttempts">0</strong>
+            </div>
+
+            <div>
+                <span>🏆 Score</span>
+                <strong id="finalScore">0</strong>
+            </div>
+
+            <div>
+                <span>⏱️ Time</span>
+                <strong id="finalTime">0s</strong>
+            </div>
+
+        </div>
+
+        <p id="secretNumber"></p>
+
+        <button onclick="restartGame()">
+            🎮 Play Again
+        </button>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>🏆 Leaderboard</h2>
+
+        <div id="leaderboard">
+            Loading...
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>📜 Game History</h2>
+
+        <div id="history">
+            Loading...
+        </div>
+
+    </section>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}">
+</script>
+
+</body>
+
+</html>
